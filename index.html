@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Melengkapi Data Diri</title>
+    <title>Melengkapi Data Diri & Ujian</title>
     <style>
         /* Gaya umum untuk body */
         body {
@@ -108,6 +108,24 @@
             border-color: #4CAF50;
             box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
         }
+
+        /* Gaya untuk ujian */
+        .quiz-container {
+            display: none;
+            margin-top: 30px;
+            animation: fadeIn 1.5s ease-out;
+            text-align: left;
+        }
+
+        .quiz-container .question {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+
+        .quiz-container button {
+            margin-top: 20px;
+        }
+
     </style>
 </head>
 <body>
@@ -130,6 +148,29 @@
                 <button type="submit">Kirim Data</button>
             </form>
         </div>
+
+        <!-- Tombol untuk melanjutkan ke ujian -->
+        <div class="next-btn-container" id="nextBtnContainer" style="display: none;">
+            <button class="button" onclick="startQuiz()">Mulai Ujian</button>
+        </div>
+
+        <!-- Halaman Ujian -->
+        <div class="quiz-container" id="quizContainer">
+            <h2>Ujian Soal</h2>
+            <div class="question">
+                <p>1. Apa ibu kota Indonesia?</p>
+                <button class="button" onclick="answerQuestion('a')">a) Jakarta</button>
+                <button class="button" onclick="answerQuestion('b')">b) Bali</button>
+                <button class="button" onclick="answerQuestion('c')">c) Surabaya</button>
+            </div>
+            <div class="question">
+                <p>2. Siapa Presiden pertama Indonesia?</p>
+                <button class="button" onclick="answerQuestion('a')">a) Soekarno</button>
+                <button class="button" onclick="answerQuestion('b')">b) Joko Widodo</button>
+                <button class="button" onclick="answerQuestion('c')">c) Suharto</button>
+            </div>
+            <button class="button" onclick="finishQuiz()">Selesai Ujian</button>
+        </div>
     </div>
 
     <script>
@@ -150,7 +191,26 @@
 
             alert(`Terima kasih, ${nama}!\nData Anda telah diterima.`);
             console.log(`Nama: ${nama}\nEmail: ${email}\nAlamat: ${alamat}\nJenis Kelamin: ${gender}`);
+
+            // Menampilkan tombol untuk melanjutkan ke ujian
+            document.getElementById('nextBtnContainer').style.display = 'block';
         });
+
+        // Fungsi untuk memulai ujian
+        function startQuiz() {
+            document.getElementById('quizContainer').style.display = 'block';
+        }
+
+        // Fungsi untuk menangani jawaban soal ujian
+        function answerQuestion(answer) {
+            console.log("Jawaban yang dipilih: " + answer);
+        }
+
+        // Fungsi untuk menyelesaikan ujian
+        function finishQuiz() {
+            alert("Ujian selesai! Terima kasih telah mengisi.");
+            document.getElementById('quizContainer').style.display = 'none';
+        }
     </script>
 </body>
-</html>
+        </html>
