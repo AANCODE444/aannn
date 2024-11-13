@@ -3,223 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simpan Data Pengguna</title>
+    <title>Kata-Kata Romantis untuk Pacar</title>
     <style>
+        /* Gaya latar belakang */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://f.top4top.io/p_323987cjb0.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            margin: 0;
+            padding: 0;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-        }
-
-        .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
-
-        input, button {
-            padding: 10px;
-            margin: 10px 0;
-            width: 100%;
-            font-size: 16px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        #message {
-            margin-top: 20px;
-            font-size: 16px;
-            color: green;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <h2>Masukkan Data Pengguna</h2>
-        <input type="text" id="name" placeholder="Nama Anda" required>
-        <input type="email" id="email" placeholder="Email Anda" required>
-        <input type="date" id="dob" placeholder="Tanggal Lahir" required>
-        <textarea id="address" placeholder="Alamat Anda" rows="4" required></textarea>
-        <button onclick="saveData()">Simpan Data</button>
-        <div id="message"></div>
-    </div>
-
-    <script>
-        // Fungsi untuk menyimpan data pengguna ke localStorage
-        function saveData() {
-            var name = document.getElementById('name').value;
-            var email = document.getElementById('email').value;
-            var dob = document.getElementById('dob').value;
-            var address = document.getElementById('address').value;
-
-            // Cek apakah semua field telah diisi
-            if (name && email && dob && address) {
-                // Simpan data ke localStorage
-                localS<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program Soal Pilihan Ganda</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            padding: 20px;
-        }
-
-        .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 400px;
-            margin: 0 auto;
-        }
-
-        h2 {
+            height: 100vh;
             text-align: center;
-            color: #333;
+            overflow: hidden;
         }
 
-        .question {
-            font-size: 18px;
-            margin-bottom: 10px;
+        /* Gaya untuk kontainer teks */
+        .container {
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            width: 80%;
+            max-width: 700px;
+            animation: fadeIn 2s ease-in-out;
         }
 
-        .options {
-            margin-bottom: 20px;
+        /* Efek animasi untuk kata-kata */
+        .message {
+            font-size: 32px;
+            font-weight: bold;
+            opacity: 0;
+            animation: appear 1.5s ease-in-out forwards;
         }
 
-        .option {
-            display: block;
-            margin: 5px 0;
-            font-size: 16px;
+        /* Animasi kemunculan kata */
+        @keyframes appear {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
+        /* Efek bergelombang untuk teks */
+        .message:nth-child(odd) {
+            animation: wave 1.5s ease-in-out 0.5s forwards;
+        }
+
+        @keyframes wave {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Efek ketikan */
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 4px solid #fff;
+            width: 0;
+            animation: typing 3s steps(30) 1s 1 normal both, blinkCaret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blinkCaret {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        /* Button untuk lanjutkan */
         button {
-            background-color: #4CAF50;
-            color: white;
+            margin-top: 20px;
             padding: 10px 20px;
+            background-color: #ff69b4;
             border: none;
-            border-radius: 5px;
+            color: white;
+            font-size: 18px;
             cursor: pointer;
-            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #ff1493;
         }
 
-        #result {
-            text-align: center;
-            font-size: 18px;
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h2>Soal Pilihan Ganda</h2>
+        <!-- Pesan animasi -->
+        <div class="message">"Kamu adalah alasan aku tersenyum setiap hari."</div>
+        <div class="message">"Hidupku menjadi lebih indah sejak ada kamu."</div>
+        <div class="message typewriter">"Aku ingin bersama denganmu selamanya."</div>
+        <div class="message">"Tanpamu, dunia ini terasa sepi."</div>
+        <div class="message">"Kamu adalah bagian dari hidupku yang paling indah."</div>
 
-        <div id="question-container">
-            <div class="question">Siapakah Presiden Indonesia saat ini?</div>
-            <div class="options">
-                <label class="option">
-                    <input type="radio" name="question" value="a"> Joko Widodo
-                </label>
-                <label class="option">
-                    <input type="radio" name="question" value="b"> Megawati Soekarnoputri
-                </label>
-                <label class="option">
-                    <input type="radio" name="question" value="c"> Susilo Bambang Yudhoyono
-                </label>
-                <label class="option">
-                    <input type="radio" name="question" value="d"> Prabowo Subianto
-                </label>
-            </div>
-            <button onclick="checkAnswer()">Kirim Jawaban</button>
-        </div>
-
-        <div id="result"></div>
+        <!-- Tombol untuk lanjutkan atau melanjutkan animasi -->
+        <button onclick="alert('Kamu luar biasa!')">Klik untuk melanjutkan</button>
     </div>
 
     <script>
-        // Fungsi untuk mengecek jawaban
-        function checkAnswer() {
-            var selectedOption = document.querySelector('input[name="question"]:checked');
-            
-            if (selectedOption) {
-                var answer = selectedOption.value;
-                var resultMessage = '';
-                
-                // Cek jawaban benar atau salah
-                if (answer === 'a') {
-                    resultMessage = 'Jawaban Anda Benar! Joko Widodo adalah Presiden Indonesia saat ini.';
-                } else {
-                    resultMessage = 'Jawaban Anda Salah. Coba lagi!';
-                }
-                
-                // Tampilkan hasil
-                document.getElementById('result').innerText = resultMessage;
-            } else {
-                // Jika tidak ada jawaban yang dipilih
-                document.getElementById('result').innerText = 'Mohon pilih jawaban terlebih dahulu.';
-            }
-        }
-    </script>
-
-</body>
-</html>torage.setItem('userName', name);
-                localStorage.setItem('userEmail', email);
-                localStorage.setItem('userDob', dob);
-                localStorage.setItem('userAddress', address);
-
-                // Tampilkan pesan sukses
-                document.getElementById('message').innerText = 'Data berhasil disimpan!';
-                document.getElementById('message').style.color = 'green';
-                
-                // Reset input
-                document.getElementById('name').value = '';
-                document.getElementById('email').value = '';
-                document.getElementById('dob').value = '';
-                document.getElementById('address').value = '';
-            } else {
-                // Jika ada field yang kosong, tampilkan pesan kesalahan
-                document.getElementById('message').innerText = 'Mohon isi semua field!';
-                document.getElementById('message').style.color = 'red';
-            }
-        }
-
-        // Cek jika data sudah disimpan sebelumnya
-        window.onload = function() {
-            var storedName = localStorage.getItem('userName');
-            var storedEmail = localStorage.getItem('userEmail');
-            var storedDob = localStorage.getItem('userDob');
-            var storedAddress = localStorage.getItem('userAddress');
-
-            if (storedName && storedEmail && storedDob && storedAddress) {
-                document.getElementById('message').innerText = `Data yang disimpan: ${storedName}, ${storedEmail}, ${storedDob}, ${storedAddress}`;
-                document.getElementById('message').style.color = 'blue';
-            }
-        }
+        // Menambahkan efek ketikan pada elemen dengan class 'typewriter'
+        document.querySelectorAll('.typewriter').forEach(function(element, index) {
+            element.style.animationDelay = (index + 1) * 1.5 + "s";
+        });
     </script>
 
 </body>
