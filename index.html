@@ -3,168 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program Proyek</title>
+    <title>Simpan Data Pengguna</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            background-image: url('https://e.top4top.io/p_3229zf3gp0.jpg');
-            background-size: cover;
             font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
-            color: white;
+            align-items: center;
         }
 
-        #startButton {
-            padding: 10px 20px;
-            font-size: 18px;
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        button {
             background-color: #4CAF50;
-            border: none;
+            color: white;
             cursor: pointer;
-            margin-bottom: 20px;
         }
 
-        #loading {
-            display: none;
-            font-size: 24px;
-            animation: blink 1s infinite;
+        button:hover {
+            background-color: #45a049;
         }
 
-        @keyframes blink {
-            0% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 0; }
-        }
-
-        #butterfly {
-            display: none;
-            position: absolute;
-            animation: fly 5s infinite;
-        }
-
-        @keyframes fly {
-            0% { top: -100px; left: 0; }
-            50% { top: 50vh; left: 50%; }
-            100% { top: 100vh; left: 100%; }
-        }
-
-        #inputName {
-            display: none;
-            margin-bottom: 20px;
-        }
-
-        #selectionButtons {
-            display: none;
+        #message {
             margin-top: 20px;
+            font-size: 16px;
+            color: green;
         }
-
-        .button {
-            padding: 10px 20px;
-            font-size: 18px;
-            margin: 5px;
-            background-color: #2196F3;
-            border: none;
-            cursor: pointer;
-        }
-
-        .buttonBack {
-            background-color: #f44336;
-        }
-
-        #pantun, #words, #love {
-            display: none;
-        }
-
     </style>
 </head>
 <body>
 
-    <button id="startButton">MULAI</button>
-    <div id="loading">Loading...</div>
-    <div id="butterfly">
-        <img src="https://www.example.com/butterfly.gif" alt="Butterfly" width="100">
-    </div>
-
-    <div id="inputName">
-        <input type="text" id="userName" placeholder="Masukkan nama anda">
-        <button onclick="submitName()">Kirim</button>
-    </div>
-
-    <div id="selectionButtons">
-        <p>SILAHKAN PILIH SALAH SATU</p>
-        <button class="button" onclick="showPantun()">1</button>
-        <button class="button" onclick="showWords()">2</button>
-        <button class="button" onclick="showLove()">3</button>
-    </div>
-
-    <div id="pantun">
-        <p>Baris pertama pantun...</p>
-        <p>Baris kedua pantun...</p>
-        <button class="button buttonBack" onclick="goBack()">Kembali</button>
-    </div>
-
-    <div id="words">
-        <p>Kata pertama...</p>
-        <p>Kata kedua...</p>
-        <p>Kata ketiga...</p>
-        <p>Kata keempat...</p>
-        <p>Kata kelima...</p>
-        <button class="button buttonBack" onclick="goBack()">Kembali</button>
-    </div>
-
-    <div id="love">
-        <h1>I LOVE U</h1>
+    <div class="container">
+        <h2>Masukkan Data Pengguna</h2>
+        <input type="text" id="name" placeholder="Nama Anda" required>
+        <input type="email" id="email" placeholder="Email Anda" required>
+        <input type="date" id="dob" placeholder="Tanggal Lahir" required>
+        <textarea id="address" placeholder="Alamat Anda" rows="4" required></textarea>
+        <button onclick="saveData()">Simpan Data</button>
+        <div id="message"></div>
     </div>
 
     <script>
-        function startProgram() {
-            document.getElementById('startButton').style.display = 'none';
-            document.getElementById('loading').style.display = 'block';
-            setTimeout(function() {
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('butterfly').style.display = 'block';
-                setTimeout(function() {
-                    document.getElementById('butterfly').style.display = 'none';
-                    document.getElementById('inputName').style.display = 'block';
-                }, 5000);
-            }, 2000);
-        }
+        // Fungsi untuk menyimpan data pengguna ke localStorage
+        function saveData() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var dob = document.getElementById('dob').value;
+            var address = document.getElementById('address').value;
 
-        function submitName() {
-            const userName = document.getElementById('userName').value;
-            if (userName) {
-                document.getElementById('inputName').style.display = 'none';
-                document.getElementById('selectionButtons').style.display = 'block';
+            // Cek apakah semua field telah diisi
+            if (name && email && dob && address) {
+                // Simpan data ke localStorage
+                localStorage.setItem('userName', name);
+                localStorage.setItem('userEmail', email);
+                localStorage.setItem('userDob', dob);
+                localStorage.setItem('userAddress', address);
+
+                // Tampilkan pesan sukses
+                document.getElementById('message').innerText = 'Data berhasil disimpan!';
+                document.getElementById('message').style.color = 'green';
+                
+                // Reset input
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('dob').value = '';
+                document.getElementById('address').value = '';
+            } else {
+                // Jika ada field yang kosong, tampilkan pesan kesalahan
+                document.getElementById('message').innerText = 'Mohon isi semua field!';
+                document.getElementById('message').style.color = 'red';
             }
         }
 
-        function showPantun() {
-            document.getElementById('selectionButtons').style.display = 'none';
-            document.getElementById('pantun').style.display = 'block';
-        }
+        // Cek jika data sudah disimpan sebelumnya
+        window.onload = function() {
+            var storedName = localStorage.getItem('userName');
+            var storedEmail = localStorage.getItem('userEmail');
+            var storedDob = localStorage.getItem('userDob');
+            var storedAddress = localStorage.getItem('userAddress');
 
-        function showWords() {
-            document.getElementById('selectionButtons').style.display = 'none';
-            document.getElementById('words').style.display = 'block';
+            if (storedName && storedEmail && storedDob && storedAddress) {
+                document.getElementById('message').innerText = `Data yang disimpan: ${storedName}, ${storedEmail}, ${storedDob}, ${storedAddress}`;
+                document.getElementById('message').style.color = 'blue';
+            }
         }
-
-        function showLove() {
-            document.getElementById('selectionButtons').style.display = 'none';
-            document.getElementById('love').style.display = 'block';
-        }
-
-        function goBack() {
-            document.getElementById('pantun').style.display = 'none';
-            document.getElementById('words').style.display = 'none';
-            document.getElementById('love').style.display = 'none';
-            document.getElementById('selectionButtons').style.display = 'block';
-        }
-
-        document.getElementById('startButton').addEventListener('click', startProgram);
     </script>
 
 </body>
