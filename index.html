@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Melengkapi Data Diri & Ujian</title>
+    <title>Game Tebak Angka</title>
     <style>
-        /* Gaya umum untuk body */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f8ff;
@@ -18,199 +17,92 @@
             flex-direction: column;
         }
 
-        /* Gaya untuk container utama */
-        .container {
-            text-align: center;
-            padding: 20px;
-        }
-
-        /* Gaya untuk judul halaman */
         h1 {
             font-size: 2.5em;
             color: #333;
-            margin-bottom: 20px;
-            animation: fadeIn 2s ease-out;
         }
 
-        /* Gaya untuk tombol */
-        .button {
-            padding: 15px 30px;
-            font-size: 1.2em;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
+        .game-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
             border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 300px;
         }
 
-        /* Efek hover pada tombol */
-        .button:hover {
-            background-color: #45a049;
-            transform: scale(1.1);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Animasi untuk tombol yang muncul */
-        .button:active {
-            transform: scale(0.95);
-        }
-
-        /* Animasi untuk form */
-        .form-container {
-            display: none;
-            margin-top: 30px;
-            animation: slideIn 1s ease-out;
-        }
-
-        /* Animasi untuk form muncul dari bawah */
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Gaya form */
-        .form-container input,
-        .form-container select,
-        .form-container button {
+        .game-container input {
             padding: 10px;
-            margin: 10px;
-            font-size: 1em;
-            border: 2px solid #ddd;
+            font-size: 1.2em;
+            width: 80%;
+            border: 2px solid #ccc;
             border-radius: 5px;
-            width: 100%;
-            max-width: 300px;
+            margin: 10px 0;
         }
 
-        .form-container button {
+        .game-container button {
+            padding: 10px 20px;
+            font-size: 1.2em;
             background-color: #4CAF50;
             color: white;
-            cursor: pointer;
             border: none;
-            transition: background-color 0.3s;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
         }
 
-        .form-container button:hover {
+        .game-container button:hover {
             background-color: #45a049;
         }
 
-        /* Animasi untuk form submit */
-        .form-container input:focus,
-        .form-container select:focus {
-            border-color: #4CAF50;
-            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
-        }
-
-        /* Gaya untuk ujian */
-        .quiz-container {
-            display: none;
-            margin-top: 30px;
-            animation: fadeIn 1.5s ease-out;
-            text-align: left;
-        }
-
-        .quiz-container .question {
+        .message {
             font-size: 1.2em;
-            margin: 20px 0;
-        }
-
-        .quiz-container button {
             margin-top: 20px;
         }
 
+        .result {
+            font-weight: bold;
+            color: #333;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Lengkapi Data Diri Anda</h1>
-        <button class="button" onclick="showForm()">Mulai Mengisi</button>
-
-        <!-- Form untuk melengkapi data diri -->
-        <div class="form-container" id="formContainer">
-            <h2>Form Data Diri</h2>
-            <form id="dataForm">
-                <input type="text" id="nama" placeholder="Nama Lengkap" required><br>
-                <input type="email" id="email" placeholder="Email" required><br>
-                <input type="text" id="alamat" placeholder="Alamat" required><br>
-                <select id="gender" required>
-                    <option value="">Pilih Jenis Kelamin</option>
-                    <option value="Laki-laki">Laki-laki</option>
-                    <option value="Perempuan">Perempuan</option>
-                </select><br>
-                <button type="submit">Kirim Data</button>
-            </form>
-        </div>
-
-        <!-- Tombol untuk melanjutkan ke ujian -->
-        <div class="next-btn-container" id="nextBtnContainer" style="display: none;">
-            <button class="button" onclick="startQuiz()">Mulai Ujian</button>
-        </div>
-
-        <!-- Halaman Ujian -->
-        <div class="quiz-container" id="quizContainer">
-            <h2>Ujian Soal</h2>
-            <div class="question">
-                <p>1. Apa ibu kota Indonesia?</p>
-                <button class="button" onclick="answerQuestion('a')">a) Jakarta</button>
-                <button class="button" onclick="answerQuestion('b')">b) Bali</button>
-                <button class="button" onclick="answerQuestion('c')">c) Surabaya</button>
-            </div>
-            <div class="question">
-                <p>2. Siapa Presiden pertama Indonesia?</p>
-                <button class="button" onclick="answerQuestion('a')">a) Soekarno</button>
-                <button class="button" onclick="answerQuestion('b')">b) Joko Widodo</button>
-                <button class="button" onclick="answerQuestion('c')">c) Suharto</button>
-            </div>
-            <button class="button" onclick="finishQuiz()">Selesai Ujian</button>
-        </div>
+    <div class="game-container">
+        <h1>Game Tebak Angka</h1>
+        <p>Tebak angka antara 1 dan 100!</p>
+        <input type="number" id="guessInput" placeholder="Masukkan angka..." />
+        <button onclick="checkGuess()">Tebak</button>
+        <p class="message" id="message"></p>
     </div>
 
     <script>
-        // Fungsi untuk menampilkan form ketika tombol diklik
-        function showForm() {
-            document.getElementById('formContainer').style.display = 'block';
-        }
+        // Menentukan angka yang benar secara acak
+        let correctNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
 
-        // Fungsi untuk menangani pengiriman form
-        const form = document.getElementById('dataForm');
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const nama = document.getElementById('nama').value;
-            const email = document.getElementById('email').value;
-            const alamat = document.getElementById('alamat').value;
-            const gender = document.getElementById('gender').value;
+        // Fungsi untuk memeriksa tebakan
+        function checkGuess() {
+            const userGuess = parseInt(document.getElementById('guessInput').value);
+            const messageElement = document.getElementById('message');
+            attempts++;
 
-            alert(`Terima kasih, ${nama}!\nData Anda telah diterima.`);
-            console.log(`Nama: ${nama}\nEmail: ${email}\nAlamat: ${alamat}\nJenis Kelamin: ${gender}`);
+            if (isNaN(userGuess)) {
+                messageElement.textContent = "Masukkan angka yang valid!";
+                messageElement.style.color = "red";
+            } else if (userGuess < correctNumber) {
+                messageElement.textContent = "Tebakan Anda terlalu rendah! Coba lagi.";
+                messageElement.style.color = "orange";
+            } else if (userGuess > correctNumber) {
+                messageElement.textContent = "Tebakan Anda terlalu tinggi! Coba lagi.";
+                messageElement.style.color = "orange";
+            } else {
+                messageElement.textContent = `Selamat! Anda menebak angka dengan benar setelah ${attempts} percobaan.`;
+                messageElement.style.color = "green";
+            }
 
-            // Menampilkan tombol untuk melanjutkan ke ujian
-            document.getElementById('nextBtnContainer').style.display = 'block';
-        });
-
-        // Fungsi untuk memulai ujian
-        function startQuiz() {
-            document.getElementById('quizContainer').style.display = 'block';
-        }
-
-        // Fungsi untuk menangani jawaban soal ujian
-        function answerQuestion(answer) {
-            console.log("Jawaban yang dipilih: " + answer);
-        }
-
-        // Fungsi untuk menyelesaikan ujian
-        function finishQuiz() {
-            alert("Ujian selesai! Terima kasih telah mengisi.");
-            document.getElementById('quizContainer').style.display = 'none';
+            // Reset input field
+            document.getElementById('guessInput').value = '';
         }
     </script>
 </body>
-        </html>
+</html>
