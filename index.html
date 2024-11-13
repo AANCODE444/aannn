@@ -71,7 +71,123 @@
             // Cek apakah semua field telah diisi
             if (name && email && dob && address) {
                 // Simpan data ke localStorage
-                localStorage.setItem('userName', name);
+                localS<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Soal Pilihan Ganda</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .question {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .options {
+            margin-bottom: 20px;
+        }
+
+        .option {
+            display: block;
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Soal Pilihan Ganda</h2>
+
+        <div id="question-container">
+            <div class="question">Siapakah Presiden Indonesia saat ini?</div>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="question" value="a"> Joko Widodo
+                </label>
+                <label class="option">
+                    <input type="radio" name="question" value="b"> Megawati Soekarnoputri
+                </label>
+                <label class="option">
+                    <input type="radio" name="question" value="c"> Susilo Bambang Yudhoyono
+                </label>
+                <label class="option">
+                    <input type="radio" name="question" value="d"> Prabowo Subianto
+                </label>
+            </div>
+            <button onclick="checkAnswer()">Kirim Jawaban</button>
+        </div>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // Fungsi untuk mengecek jawaban
+        function checkAnswer() {
+            var selectedOption = document.querySelector('input[name="question"]:checked');
+            
+            if (selectedOption) {
+                var answer = selectedOption.value;
+                var resultMessage = '';
+                
+                // Cek jawaban benar atau salah
+                if (answer === 'a') {
+                    resultMessage = 'Jawaban Anda Benar! Joko Widodo adalah Presiden Indonesia saat ini.';
+                } else {
+                    resultMessage = 'Jawaban Anda Salah. Coba lagi!';
+                }
+                
+                // Tampilkan hasil
+                document.getElementById('result').innerText = resultMessage;
+            } else {
+                // Jika tidak ada jawaban yang dipilih
+                document.getElementById('result').innerText = 'Mohon pilih jawaban terlebih dahulu.';
+            }
+        }
+    </script>
+
+</body>
+</html>torage.setItem('userName', name);
                 localStorage.setItem('userEmail', email);
                 localStorage.setItem('userDob', dob);
                 localStorage.setItem('userAddress', address);
