@@ -3,30 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website dengan Tombol Efek dan Animasi</title>
+    <title>Melengkapi Data Diri</title>
     <style>
         /* Gaya umum untuk body */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            background-color: #f0f8ff;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            flex-direction: column;
         }
 
         /* Gaya untuk container utama */
         .container {
             text-align: center;
+            padding: 20px;
         }
 
         /* Gaya untuk judul halaman */
         h1 {
-            font-size: 3em;
+            font-size: 2.5em;
             color: #333;
             margin-bottom: 20px;
+            animation: fadeIn 2s ease-out;
         }
 
         /* Gaya untuk tombol */
@@ -40,6 +43,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
         }
 
         /* Efek hover pada tombol */
@@ -54,39 +58,98 @@
             transform: scale(0.95);
         }
 
-        /* Animasi teks */
-        .animated-text {
-            font-size: 1.5em;
-            color: #555;
+        /* Animasi untuk form */
+        .form-container {
+            display: none;
             margin-top: 30px;
-            animation: slideIn 2s ease-out;
+            animation: slideIn 1s ease-out;
         }
 
-        /* Keyframes untuk animasi slide-in */
+        /* Animasi untuk form muncul dari bawah */
         @keyframes slideIn {
             from {
                 opacity: 0;
-                transform: translateX(-100%);
+                transform: translateY(100px);
             }
             to {
                 opacity: 1;
-                transform: translateX(0);
+                transform: translateY(0);
             }
+        }
+
+        /* Gaya form */
+        .form-container input,
+        .form-container select,
+        .form-container button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 1em;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        /* Animasi untuk form submit */
+        .form-container input:focus,
+        .form-container select:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Selamat datang di Website Saya!</h1>
-        <button class="button">Klik Saya!</button>
-        <p class="animated-text">Teks ini akan muncul dengan animasi!</p>
+        <h1>Lengkapi Data Diri Anda</h1>
+        <button class="button" onclick="showForm()">Mulai Mengisi</button>
+
+        <!-- Form untuk melengkapi data diri -->
+        <div class="form-container" id="formContainer">
+            <h2>Form Data Diri</h2>
+            <form id="dataForm">
+                <input type="text" id="nama" placeholder="Nama Lengkap" required><br>
+                <input type="email" id="email" placeholder="Email" required><br>
+                <input type="text" id="alamat" placeholder="Alamat" required><br>
+                <select id="gender" required>
+                    <option value="">Pilih Jenis Kelamin</option>
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </select><br>
+                <button type="submit">Kirim Data</button>
+            </form>
+        </div>
     </div>
 
     <script>
-        // Menambahkan event listener untuk tombol
-        const button = document.querySelector('.button');
-        button.addEventListener('click', function() {
-            alert('Tombol telah diklik!');
+        // Fungsi untuk menampilkan form ketika tombol diklik
+        function showForm() {
+            document.getElementById('formContainer').style.display = 'block';
+        }
+
+        // Fungsi untuk menangani pengiriman form
+        const form = document.getElementById('dataForm');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const nama = document.getElementById('nama').value;
+            const email = document.getElementById('email').value;
+            const alamat = document.getElementById('alamat').value;
+            const gender = document.getElementById('gender').value;
+
+            alert(`Terima kasih, ${nama}!\nData Anda telah diterima.`);
+            console.log(`Nama: ${nama}\nEmail: ${email}\nAlamat: ${alamat}\nJenis Kelamin: ${gender}`);
         });
     </script>
 </body>
