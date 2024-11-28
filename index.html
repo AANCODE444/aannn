@@ -1,144 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AANCUY Font Generator</title>
+    <title>List Produk - AAN STORE</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
         }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
         header {
-            background-color: #6200ea;
+            background-color: #333;
             color: white;
+            padding: 15px 0;
             text-align: center;
-            padding: 1.5rem;
         }
-        main {
-            padding: 2rem;
-            max-width: 600px;
-            margin: auto;
-            background: #fff;
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .product-card {
+            background-color: white;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 30%;
+            text-align: center;
         }
-        input[type="text"], button {
-            width: 100%;
-            padding: 12px;
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .product-card h3 {
+            font-size: 1.5rem;
             margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
         }
-        button {
-            background-color: #6200ea;
+        .product-card p {
+            font-size: 1rem;
+            color: #555;
+        }
+        .product-card .price {
+            font-size: 1.2rem;
+            color: #e60000;
+            margin: 10px 0;
+        }
+        .product-card .whatsapp-button {
+            background-color: #25D366;
             color: white;
-            border: none;
-            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
         }
-        button:hover {
-            background-color: #3700b3;
-        }
-        #fontPreview {
-            margin-top: 20px;
-            background-color: #fafafa;
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 8px;
-        }
-        #previewOutput {
-            font-family: monospace;
-            white-space: pre-line;
-            font-size: 18px;
+        .product-card .whatsapp-button:hover {
+            background-color: #128C7E;
         }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>AANCUY Font Generator</h1>
+        <h1>AAN STORE - Daftar Produk</h1>
     </header>
-    <main>
-        <section>
-            <label for="textInput">Masukkan teks:</label>
-            <input type="text" id="textInput" placeholder="Masukkan teks di sini...">
-            <button id="generateFont">Generate Font</button>
-            <button id="downloadFont">Download Hasil</button>
-        </section>
-        <section id="fontPreview">
-            <h2>Hasil Font:</h2>
-            <div id="previewOutput">Hasil akan tampil di sini</div>
-        </section>
-    </main>
-    <script>
-        const asciiFontMap = {
-            'A': '▄▀█ █░░',
-            'B': '█▀█ █▄▄',
-            'C': '█░█ ▀▀█',
-            'D': '█▄█ █▀▄',
-            'E': '█░█ ▀▀█',
-            'F': '█░█ ▀▀▄',
-            'G': '█▀█ ▄█░',
-            'H': '█░█ █░█',
-            'I': '▀█▀ ░█░',
-            'J': '░█░ █▄█',
-            'K': '█▀█ █▄▀',
-            'L': '█░░ █▄▄',
-            'M': '█▄█ █░█',
-            'N': '█▀█ █░█',
-            'O': '█▄█ █▄█',
-            'P': '█▀█ █▀▀',
-            'Q': '█▄█ ▀█▄',
-            'R': '█▀█ █▀▄',
-            'S': '█▀▄ ▄▀█',
-            'T': '▀█▀ ░█░',
-            'U': '█░█ █▄█',
-            'V': '█░█ ▀▄▀',
-            'W': '█░█ █▄█',
-            'X': '▀▄▀ █▀█',
-            'Y': '█▀█ ░█░',
-            'Z': '▀█▄ █▄▀',
-            ' ': '     '
-        };
 
-        function generateAsciiFont(text) {
-            const lines = ['', ''];
-            for (let char of text.toUpperCase()) {
-                const asciiChar = asciiFontMap[char] || char;
-                const parts = asciiChar.split(' ');
-                lines[0] += (parts[0] || ' ') + ' ';
-                lines[1] += (parts[1] || ' ') + ' ';
-            }
-            return lines.join('\n');
-        }
+    <div class="container">
+        <div class="product-list">
+            <!-- Produk 1 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Produk 1">
+                <h3>Produk 1</h3>
+                <p>Deskripsi singkat produk 1. Produk ini sangat berkualitas dan cocok untuk Anda.</p>
+                <div class="price">Rp 150.000</div>
+                <a href="https://wa.me/6289518303639?text=Halo%20saya%20tertarik%20dengan%20Produk%201" class="whatsapp-button" target="_blank">Hubungi Penjual</a>
+            </div>
 
-        const textInput = document.getElementById('textInput');
-        const previewOutput = document.getElementById('previewOutput');
-        const generateFont = document.getElementById('generateFont');
-        const downloadFont = document.getElementById('downloadFont');
+            <!-- Produk 2 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Produk 2">
+                <h3>Produk 2</h3>
+                <p>Deskripsi singkat produk 2. Produk yang cocok untuk kebutuhan sehari-hari Anda.</p>
+                <div class="price">Rp 250.000</div>
+                <a href="https://wa.me/6289518303639?text=Halo%20saya%20tertarik%20dengan%20Produk%202" class="whatsapp-button" target="_blank">Hubungi Penjual</a>
+            </div>
 
-        generateFont.addEventListener('click', () => {
-            const inputText = textInput.value;
-            const asciiText = generateAsciiFont(inputText);
-            previewOutput.textContent = asciiText;
-        });
+            <!-- Produk 3 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Produk 3">
+                <h3>Produk 3</h3>
+                <p>Deskripsi singkat produk 3. Produk ini sangat populer dan banyak dicari.</p>
+                <div class="price">Rp 300.000</div>
+                <a href="https://wa.me/6289518303639?text=Halo%20saya%20tertarik%20dengan%20Produk%203" class="whatsapp-button" target="_blank">Hubungi Penjual</a>
+            </div>
+        </div>
+    </div>
 
-        downloadFont.addEventListener('click', () => {
-            const inputText = textInput.value;
-            const asciiText = generateAsciiFont(inputText);
-
-            const blob = new Blob([asciiText], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `${inputText || 'aancuy_font'}.txt`;
-            a.click();
-
-            URL.revokeObjectURL(url);
-        });
-    </script>
 </body>
 </html>
